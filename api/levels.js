@@ -8,8 +8,8 @@ export default async function handler(req, res) {
     if (req.method === 'OPTIONS') return res.status(200).end();
 
     try {
-        const listType = req.query.type || 'TPCL';
-        const tableName = listType === 'TPL' ? 'public.levels_2' : 'public.levels';
+        const listType = req.query.type || 'SKCDL';
+        const tableName = listType === 'SKCCL' ? 'public.levels_2' : 'public.levels';
         const levelId = req.query.id;
         const full = req.query.full === 'true';
 
