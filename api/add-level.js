@@ -38,8 +38,8 @@ export default async function handler(req, res) {
             return res.status(403).json({ error: 'Only admins can add levels' });
         }
 
-        const listName = type === 'TPL' ? 'TPL' : 'TPCL';
-        const tableName = type === 'TPL' ? 'public.levels_2' : 'public.levels';
+        const listName = type === 'SKCCL' ? 'SKCCL' : 'SKCDL';
+        const tableName = type === 'SKCCL' ? 'public.levels_2' : 'public.levels';
         const realName = levelData.name;
 
         if (levelData.records) {
