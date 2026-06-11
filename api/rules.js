@@ -10,8 +10,8 @@ export default async function handler(req, res) {
     if (req.method === 'OPTIONS') return res.status(200).end();
 
     try {
-        const type = (req.query.type || req.body.type || 'TPCL').toUpperCase();
-        const dbKey = type === 'TPL' ? 'rules_TPL' : 'rules_TPCL';
+        const type = (req.query.type || req.body.type || 'SKCDL').toUpperCase();
+        const dbKey = type === 'SKCCL' ? 'rules_SKCCL' : 'rules_SKCDL';
 
         if (req.method === 'GET') {
             const result = await query("SELECT data FROM public.system WHERE key = $1", [dbKey]);
