@@ -20,10 +20,10 @@ export const store = Vue.reactive({
         const logo = document.querySelector('header .logo h2');
 
         if (type === 'SKCCL') {
-            // Твой новый темно-красный цвет для SKCCL
-            root.style.setProperty('--color-primary', '#a82020');
-            root.style.setProperty('--color-primary-level', '#ff9e9e');
-            // Делаем текст в шапке белым, чтобы на красном отлично читался
+            
+            root.style.setProperty('--color-primary', '#5c0d0d');
+            root.style.setProperty('--color-primary-level', '#ffb3b3');
+            root.style.setProperty('--color-primary-hover', '#7a1414');
             root.style.setProperty('--color-on-primary', '#ffffff');
             
             if (logo) {
@@ -32,9 +32,11 @@ export const store = Vue.reactive({
                 if (!logo.innerText.includes('SKCCL')) logo.innerText = 'SKCCL';
             }
         } else {
+            
             root.style.removeProperty('--color-primary');
             root.style.removeProperty('--color-primary-level');
-            root.style.removeProperty('--color-on-primary'); // Не забываем убирать при возврате на SKCDL
+            root.style.removeProperty('--color-primary-hover');
+            root.style.removeProperty('--color-on-primary');
 
             if (logo) {
                 logo.innerText = logo.innerText.replace('SKCCL', 'SKCDL');
