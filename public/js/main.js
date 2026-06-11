@@ -2,7 +2,7 @@ import routes from './routes.js';
 
 export const store = Vue.reactive({
     dark: JSON.parse(localStorage.getItem('dark')) || false,
-    listType: localStorage.getItem('listType') || 'TPCL',
+    listType: localStorage.getItem('listType') || 'SKCDL',
 
     toggleDark() {
         this.dark = !this.dark;
@@ -19,23 +19,23 @@ export const store = Vue.reactive({
         const root = document.documentElement;
         const logo = document.querySelector('header .logo h2');
 
-        if (type === 'TPL') {
+        if (type === 'SKCCL') {
             root.style.setProperty('--color-primary', '#feb33b');
             root.style.setProperty('--color-primary-level', '#ffd498');
             
             if (logo) {
-                logo.innerText = logo.innerText.replace('TPCL', 'TPL');
-                if (logo.innerText === 'The Piss List') logo.innerText = 'The Piss List'; 
-                if (!logo.innerText.includes('TPL')) logo.innerText = 'TPL';
+                logo.innerText = logo.innerText.replace('SKCDL', 'SKCCL');
+                if (logo.innerText === 'Sakupen Circles List') logo.innerText = 'Sakupen Circles List'; 
+                if (!logo.innerText.includes('SKCCL')) logo.innerText = 'SKCCL';
             }
         } else {
             root.style.removeProperty('--color-primary');
             root.style.removeProperty('--color-primary-level');
 
             if (logo) {
-                logo.innerText = logo.innerText.replace('TPL', 'TPCL');
-                if (logo.innerText === 'The Piss List') logo.innerText = 'The Piss List';
-                if (!logo.innerText.includes('TPCL')) logo.innerText = 'TPCL';
+                logo.innerText = logo.innerText.replace('SKCCL', 'SKCDL');
+                if (logo.innerText === 'Sakupen Circles List') logo.innerText = 'Sakupen Circles List';
+                if (!logo.innerText.includes('SKCDL')) logo.innerText = 'SKCDL';
             }
         }
     }
@@ -49,10 +49,10 @@ const router = VueRouter.createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    let title = "TPCL | The Piss List";
+    let title = "SKCDL | Sakupen Circles List";
 
-    const listPrefix = store.listType === 'TPL' ? 'TPL' : 'TPCL';
-    const listName = store.listType === 'TPL' ? 'The Piss List' : 'The Piss List';
+    const listPrefix = store.listType === 'SKCCL' ? 'SKCCL' : 'SKCDL';
+    const listName = store.listType === 'SKCCL' ? 'Sakupen Circles List' : 'Sakupen Circles List';
 
     if (to.path === '/' || to.params._id) title = `${listPrefix} | ${listName}`;
     else if (to.path === '/leaderboard') title = "Leaderboard | " + listPrefix;
