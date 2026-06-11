@@ -287,7 +287,7 @@ export default {
                             </div>
                             <p class="type-body" style="margin-bottom: 20px; font-size: 0.9rem; opacity: 0.9;">
                                 This is a fork of the TPL
-                                <a href="https://sakupen-circles-list.vercel.app/" target="_blank" style="text-decoration: underline; color: inherit;">Check them out!</a>
+                                <a href="https://www.thepisslist.com/" target="_blank" style="text-decoration: underline; color: inherit;">Check them out!</a>
                             </p>
                         </div>
 
