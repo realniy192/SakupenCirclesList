@@ -211,7 +211,7 @@ export default {
                             </span>
                         </div>
 
-                        <p class="warning-lable type-label-md">WARNING! Levels AND videos may be epileptic</p>
+                        <p class="warning-lable type-label-md">WARNING! Levels AND Videos may be epileptic.</p>
                         
                         <div class="video-container" v-html="video"></div>
 
