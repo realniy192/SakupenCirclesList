@@ -76,10 +76,10 @@ export async function verifyToken(req) {
 export async function auditLog(decodedUser, action, details) {
     if (!decodedUser || !decodedUser.username) return;
 
-    const listType = details.list || 'TPCL';
-    const tableName = listType === 'TPL' ? 'public.levels_2' : 'public.levels';
+    const listType = details.list || 'SKCDL';
+    const tableName = listType === 'SKCCL' ? 'public.levels_2' : 'public.levels';
 
-    const updateWebhook = listType === 'TPL' ? DISCORD_UPDATE_WEBHOOK_URL_2 : DISCORD_UPDATE_WEBHOOK_URL;
+    const updateWebhook = listType === 'SKCCL' ? DISCORD_UPDATE_WEBHOOK_URL_2 : DISCORD_UPDATE_WEBHOOK_URL;
 
     if (updateWebhook) {
         let publicMsg = null;
@@ -112,12 +112,12 @@ export async function auditLog(decodedUser, action, details) {
             case "APPROVE_SUBMISSION":
                 if (action === "APPROVE_SUBMISSION" && details.type !== 'level' && !details.rank) break;
 
-                const targetPlacement = details.placement || details.rank;
+                const targeSKCCLacement = details.placement || details.rank;
                 const targetName = details.level?.name || details.levelName || details.level || details.name;
 
-                if (targetName && targetPlacement) {
-                    const neighbors = await getNeighbors(targetPlacement);
-                    publicMsg = `## ${listType} List Update\n- **${targetName}** has been placed at **#${targetPlacement}**${neighbors}`;
+                if (targetName && targeSKCCLacement) {
+                    const neighbors = await getNeighbors(targeSKCCLacement);
+                    publicMsg = `## ${listType} List Update\n- **${targetName}** has been placed at **#${targeSKCCLacement}**${neighbors}`;
                 }
                 break;
 
@@ -149,7 +149,7 @@ export async function auditLog(decodedUser, action, details) {
                                 const msg = `## ${targetList} List Update\n- **${name}** has been placed at **#${rank}**${neighbors}`;
 
                                 try {
-                                    const targetHook = targetList === 'TPL' ? DISCORD_UPDATE_WEBHOOK_URL_2 : DISCORD_UPDATE_WEBHOOK_URL;
+                                    const targetHook = targetList === 'SKCCL' ? DISCORD_UPDATE_WEBHOOK_URL_2 : DISCORD_UPDATE_WEBHOOK_URL;
                                     await fetch(targetHook, {
                                         method: 'POST',
                                         headers: { 'Content-Type': 'application/json' },
@@ -420,13 +420,13 @@ export async function auditLog(decodedUser, action, details) {
     }
 
     const payloadJson = {
-        username: "TPL Staff Logs",
+        username: "SKCCL Staff Logs",
         avatar_url: "https://sakupen-circles-list.vercel.applist_icon.png",
         embeds: [{
             title: displayTitle,
             color: embedColor,
             fields: displayFields,
-            footer: { text: `TPL Audit • ${timestamp} UTC` }
+            footer: { text: `SKCCL Audit • ${timestamp} UTC` }
         }]
     };
 
