@@ -1,10 +1,10 @@
 import { round, score } from './score.js';
 
 const MEMORY_CACHE = {
-    listLite: { TPCL: null, TPL: null },
-    listFull: { TPCL: null, TPL: null },
-    packs: { TPCL: null, TPL: null },
-    rules: { TPCL: null, TPL: null },
+    listLite: { SKCDL: null, SKCCL: null },
+    listFull: { SKCDL: null, SKCCL: null },
+    packs: { SKCDL: null, SKCCL: null },
+    rules: { SKCDL: null, SKCCL: null },
     editors: null,
     records: {}
 };
@@ -14,7 +14,7 @@ const shouldBypassCache = () => {
     return hash.includes('/admin') || hash.includes('/manage');
 };
 
-export async function fetchList(type = 'TPCL', full = false) {
+export async function fetchList(type = 'SKCDL', full = false) {
     const bypass = shouldBypassCache();
     
     if (!bypass) {
@@ -68,7 +68,7 @@ export async function fetchList(type = 'TPCL', full = false) {
     }
 }
 
-export async function fetchRecords(dbId, type = 'TPCL') {
+export async function fetchRecords(dbId, type = 'SKCDL') {
     const bypass = shouldBypassCache();
     if (!bypass && MEMORY_CACHE.records[dbId]) {
         return MEMORY_CACHE.records[dbId];
@@ -88,7 +88,7 @@ export async function fetchRecords(dbId, type = 'TPCL') {
     }
 }
 
-export async function fetchPacks(type = 'TPCL') {
+export async function fetchPacks(type = 'SKCDL') {
     const bypass = shouldBypassCache();
     if (!bypass && MEMORY_CACHE.packs[type]) {
         return MEMORY_CACHE.packs[type];
@@ -107,7 +107,7 @@ export async function fetchPacks(type = 'TPCL') {
     }
 }
 
-export async function fetchRules(type = 'TPCL') {
+export async function fetchRules(type = 'SKCDL') {
     const bypass = shouldBypassCache();
     if (!bypass && MEMORY_CACHE.rules[type]) {
         return MEMORY_CACHE.rules[type];
@@ -145,7 +145,7 @@ export async function fetchEditors() {
     }
 }
 
-export async function fetchLeaderboard(type = 'TPCL') {
+export async function fetchLeaderboard(type = 'SKCDL') {
     try {
         const [list, packsData] = await Promise.all([fetchList(type, true), fetchPacks(type)]);
         if (!list) return [[], []];
