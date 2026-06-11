@@ -24,42 +24,42 @@ export default {
                                 <form class="toggles">
                                     <div class="list-group">
                                         <div class="check">
-                                            <input type="checkbox" id="TPCL" v-model="useTPCL">
-                                            <label for="TPCL" class="type-label-lg">Include TPCL</label>
+                                            <input type="checkbox" id="SKCDL" v-model="useSKCDL">
+                                            <label for="SKCDL" class="type-label-lg">Include SKCDL</label>
                                         </div>
-                                        <div class="sub-checks" v-if="useTPCL">
-                                            <div class="check" v-if="hasTPCLMain">
-                                                <input type="checkbox" id="TPCL_main" v-model="useTPCLMain">
-                                                <label for="TPCL_main" class="type-label-md">Main List (1-75)</label>
+                                        <div class="sub-checks" v-if="useSKCDL">
+                                            <div class="check" v-if="hasSKCDLMain">
+                                                <input type="checkbox" id="SKCDL_main" v-model="useSKCDLMain">
+                                                <label for="SKCDL_main" class="type-label-md">Main List (1-75)</label>
                                             </div>
-                                            <div class="check" v-if="hasTPCLExtended">
-                                                <input type="checkbox" id="TPCL_ext" v-model="useTPCLExtended">
-                                                <label for="TPCL_ext" class="type-label-md">Extended List (76-150)</label>
+                                            <div class="check" v-if="hasSKCDLExtended">
+                                                <input type="checkbox" id="SKCDL_ext" v-model="useSKCDLExtended">
+                                                <label for="SKCDL_ext" class="type-label-md">Extended List (76-150)</label>
                                             </div>
-                                            <div class="check" v-if="hasTPCLLegacy">
-                                                <input type="checkbox" id="TPCL_leg" v-model="useTPCLLegacy">
-                                                <label for="TPCL_leg" class="type-label-md">Legacy List (>150)</label>
+                                            <div class="check" v-if="hasSKCDLLegacy">
+                                                <input type="checkbox" id="SKCDL_leg" v-model="useSKCDLLegacy">
+                                                <label for="SKCDL_leg" class="type-label-md">Legacy List (>150)</label>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="list-group">
                                         <div class="check">
-                                            <input type="checkbox" id="TPL" v-model="useTPL">
-                                            <label for="TPL" class="type-label-lg">Include TPL</label>
+                                            <input type="checkbox" id="SKCCL" v-model="useSKCCL">
+                                            <label for="SKCCL" class="type-label-lg">Include SKCCL</label>
                                         </div>
-                                        <div class="sub-checks" v-if="useTPL">
-                                            <div class="check" v-if="hasTPLMain">
-                                                <input type="checkbox" id="tpl_main" v-model="useTPLMain">
-                                                <label for="tpl_main" class="type-label-md">Main List (1-75)</label>
+                                        <div class="sub-checks" v-if="useSKCCL">
+                                            <div class="check" v-if="hasSKCCLMain">
+                                                <input type="checkbox" id="SKCCL_main" v-model="useSKCCLMain">
+                                                <label for="SKCCL_main" class="type-label-md">Main List (1-75)</label>
                                             </div>
-                                            <div class="check" v-if="hasTPLExtended">
-                                                <input type="checkbox" id="tpl_ext" v-model="useTPLExtended">
-                                                <label for="tpl_ext" class="type-label-md">Extended List (76-150)</label>
+                                            <div class="check" v-if="hasSKCCLExtended">
+                                                <input type="checkbox" id="SKCCL_ext" v-model="useSKCCLExtended">
+                                                <label for="SKCCL_ext" class="type-label-md">Extended List (76-150)</label>
                                             </div>
-                                            <div class="check" v-if="hasTPLLegacy">
-                                                <input type="checkbox" id="tpl_leg" v-model="useTPLLegacy">
-                                                <label for="tpl_leg" class="type-label-md">Legacy List (>150)</label>
+                                            <div class="check" v-if="hasSKCCLLegacy">
+                                                <input type="checkbox" id="SKCCL_leg" v-model="useSKCCLLegacy">
+                                                <label for="SKCCL_leg" class="type-label-md">Legacy List (>150)</label>
                                             </div>
                                         </div>
                                     </div>
@@ -203,8 +203,8 @@ export default {
     data: () => ({
         loading: true, 
         
-        TPCLLevels: [],
-        TPLLevels: [],
+        SKCDLLevels: [],
+        SKCCLLevels: [],
 
         levels: [],
         progression: [],
@@ -212,16 +212,16 @@ export default {
         givenUp: false,
         showRemaining: false,
         
-        useTPL: true,
-        useTPL: false,
+        useSKCCL: true,
+        useSKCCL: false,
 
-        useTPCLMain: true,
-        useTPCLExtended: true,
-        useTPCLLegacy: true,
+        useSKCDLMain: true,
+        useSKCDLExtended: true,
+        useSKCDLLegacy: true,
 
-        useTPLMain: true,
-        useTPLExtended: true,
-        useTPLLegacy: true,
+        useSKCCLMain: true,
+        useSKCCLExtended: true,
+        useSKCCLLegacy: true,
 
         toasts: [],
         fileInput: undefined,
@@ -234,45 +234,45 @@ export default {
         this.fileInput.accept = '.json';
         this.fileInput.addEventListener('change', this.onImportUpload);
 
-        const [TPCLData, TPLData] = await Promise.all([
-            fetchList('TPCL'),
-            fetchList('TPL')
+        const [SKCDLData, SKCCLData] = await Promise.all([
+            fetchList('SKCDL'),
+            fetchList('SKCCL')
         ]);
 
-        if (TPCLData) {
-            this.TPCLLevels = TPCLData.map(([lvl], index) => {
+        if (SKCDLData) {
+            this.SKCDLLevels = SKCDLData.map(([lvl], index) => {
                 if (!lvl) return null;
                 return {
                     ...lvl,
-                    listType: 'TPCL',
+                    listType: 'SKCDL',
                     rank: index + 1,
                     video: lvl.verification || lvl.video
                 };
             }).filter(l => l);
         }
 
-        if (TPLData) {
-            this.TPLLevels = TPLData.map(([lvl], index) => {
+        if (SKCCLData) {
+            this.SKCCLLevels = SKCCLData.map(([lvl], index) => {
                 if (!lvl) return null;
                 return {
                     ...lvl,
-                    listType: 'TPL',
+                    listType: 'SKCCL',
                     rank: index + 1,
                     video: lvl.verification || lvl.video
                 };
             }).filter(l => l);
         }
 
-        if (this.TPCLLevels.length === 0 && this.TPLLevels.length === 0) {
+        if (this.SKCDLLevels.length === 0 && this.SKCCLLevels.length === 0) {
             this.showToast('Warning: Failed to load levels.');
         }
         
-        if (this.store.listType === 'TPL') {
-            this.useTPCL = false;
-            this.useTPL = true;
+        if (this.store.listType === 'SKCCL') {
+            this.useSKCDL = false;
+            this.useSKCCL = true;
         } else {
-            this.useTPCL = true;
-            this.useTPL = false;
+            this.useSKCDL = true;
+            this.useSKCCL = false;
         }
 
         this.loading = false;
@@ -284,13 +284,13 @@ export default {
         }
     },
     computed: {
-        hasTPCLMain() { return this.TPCLLevels.some(l => l.rank <= 75); },
-        hasTPCLExtended() { return this.TPCLLevels.some(l => l.rank > 75 && l.rank <= 150); },
-        hasTPCLLegacy() { return this.TPCLLevels.some(l => l.rank > 150); },
+        hasSKCDLMain() { return this.SKCDLLevels.some(l => l.rank <= 75); },
+        hasSKCDLExtended() { return this.SKCDLLevels.some(l => l.rank > 75 && l.rank <= 150); },
+        hasSKCDLLegacy() { return this.SKCDLLevels.some(l => l.rank > 150); },
 
-        hasTPLMain() { return this.TPLLevels.some(l => l.rank <= 75); },
-        hasTPLExtended() { return this.TPLLevels.some(l => l.rank > 75 && l.rank <= 150); },
-        hasTPLLegacy() { return this.TPLLevels.some(l => l.rank > 150); },
+        hasSKCCLMain() { return this.SKCCLLevels.some(l => l.rank <= 75); },
+        hasSKCCLExtended() { return this.SKCCLLevels.some(l => l.rank > 75 && l.rank <= 150); },
+        hasSKCCLLegacy() { return this.SKCCLLevels.some(l => l.rank > 150); },
 
         currentLevel() {
             return this.levels[this.progression.length];
@@ -320,29 +320,29 @@ export default {
                 if (!confirm('Give up and restart?')) return;
             }
 
-            if (!this.useTPCL && !this.useTPL) {
+            if (!this.useSKCDL && !this.useSKCCL) {
                 this.showToast('Please select at least one list.');
                 return;
             }
 
             const pool = [];
 
-            if (this.useTPCL) {
-                const TPCLSubset = this.TPCLLevels.filter(l => {
-                    if (l.rank <= 75) return this.useTPCLMain;
-                    if (l.rank <= 150) return this.useTPCLExtended;
-                    return this.useTPCLLegacy;
+            if (this.useSKCDL) {
+                const SKCDLSubset = this.SKCDLLevels.filter(l => {
+                    if (l.rank <= 75) return this.useSKCDLMain;
+                    if (l.rank <= 150) return this.useSKCDLExtended;
+                    return this.useSKCDLLegacy;
                 });
-                pool.push(...TPCLSubset);
+                pool.push(...SKCDLSubset);
             }
 
-            if (this.useTPL) {
-                const TPLSubset = this.TPLLevels.filter(l => {
-                    if (l.rank <= 75) return this.useTPLMain;
-                    if (l.rank <= 150) return this.useTPLExtended;
-                    return this.useTPLLegacy;
+            if (this.useSKCCL) {
+                const SKCCLSubset = this.SKCCLLevels.filter(l => {
+                    if (l.rank <= 75) return this.useSKCCLMain;
+                    if (l.rank <= 150) return this.useSKCCLExtended;
+                    return this.useSKCCLLegacy;
                 });
-                pool.push(...TPLSubset);
+                pool.push(...SKCCLSubset);
             }
 
             if (pool.length === 0) {
