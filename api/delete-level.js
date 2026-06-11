@@ -19,8 +19,8 @@ export default async function handler(req, res) {
 
         if (!id) return res.status(400).json({ error: 'Level ID is required' });
 
-        const listName = type === 'TPCL' ? 'TPL' : 'TPCL';
-        const tableName = type === 'TPL' ? 'public.levels_2' : 'public.levels';
+        const listName = type === 'SKCDL' ? 'SKCCL' : 'SKCDL';
+        const tableName = type === 'SKCCL' ? 'public.levels_2' : 'public.levels';
 
         const fetchRes = await query(`SELECT rank, data, name FROM ${tableName} WHERE id = $1`, [id]);
         
