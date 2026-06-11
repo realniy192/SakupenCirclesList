@@ -198,7 +198,7 @@ export default {
                                 Discord Username 
                                 <span style="opacity: 0.5; display: inline-block;">(Optional)</span>
                                 </label>
-                                <input v-model="formData.discord" type="text" class="type-label-lg" placeholder="e.g. anticroom. or corno927.3" />
+                                <input v-model="formData.discord" type="text" class="type-label-lg" placeholder="e.g. ad3usgmd" />
                                 </div>
                             </div>
 
@@ -263,7 +263,7 @@ export default {
                                 </div>
                                 <div class="form-group">
                                     <label class="type-label-lg">Verifier *</label>
-                                    <input v-model="levelFormData.verifier" type="text" class="type-label-lg" placeholder="wPopo..." />
+                                    <input v-model="levelFormData.verifier" type="text" class="type-label-lg" placeholder="ad3usgmd" />
                                 </div>
                             </div>
 
