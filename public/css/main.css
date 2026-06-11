@@ -179,18 +179,4 @@ input[type="checkbox"] {
     main>div {
         overflow-y: visible;
     }
-    
-    .video-container {
-        width: 100% !important;
-        max-width: 680px;         
-        margin-block: 1.5rem;    
-    }
-    
-    .video-container iframe.video {
-        width: 100% !important;
-        aspect-ratio: 16 / 9;     
-        height: auto !important;  
-        border-radius: 8px;       
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
-    }
 }
