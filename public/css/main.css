@@ -6,12 +6,12 @@
     --color-background-hover: #1a1a1a;
     --color-on-background-hover: #f0f0f0;
 
-    --color-primary: #a82020;          /* Основной темно-красный цвет (вместо желтого) */
-    --color-primary-level: #ff9e9e;    /* Светло-розовый/красный для акцентов в названиях */
-    --color-primary-light: #2d1212;    /* Очень темный красный для легких фонов/выделений */
-    --color-primary-hover: #c42929;    /* Чуть более яркий красный при наведении мыши */
-    --color-primary-disabled: #3d1f1f; /* Цвет для отключенных кнопок */
-    --color-on-primary: #ffffff;       /* Цвет текста поверх красных элементов (белый вместо темного) */
+    --color-primary: #a82020;
+    --color-primary-level: #2d1212;
+    --color-primary-light: #2d1212;
+    --color-primary-hover: #c42929;
+    --color-primary-disabled: #3d1f1f;
+    --color-on-primary: #ffffff;
 
     --color-error: #de0000;
     --color-on-error: white;
