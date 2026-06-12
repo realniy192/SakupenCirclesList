@@ -180,12 +180,8 @@ input[type="checkbox"] {
         overflow-y: visible;
     }
 
-    .list .level.active,
-    .list .level.active button,
-    .list .active,
-    button:focus {
-        border: 1px solid #a82020 !important; /* Четкий темно-красный бордер */
-        box-shadow: 0 0 10px rgba(168, 32, 32, 0.5) !important; /* Мягкое темно-красное свечение вместо желтого говна */
-        outline: none !important; /* Убираем дефолтный синий/желтый ободок браузера */
+    .page-list .list .level.active button {
+        box-shadow: 0 0 10px rgba(168, 32, 32, 0.6) !important;
+        border-color: #a82020 !important;
     }
 }
