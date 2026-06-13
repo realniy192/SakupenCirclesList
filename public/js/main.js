@@ -22,7 +22,7 @@ export const store = Vue.reactive({
         if (type === 'SKCCL') {
             
             root.style.setProperty('--color-primary', '#5c0d0d');
-            root.style.setProperty('--color-primary-level', '#ffb3b3');
+            root.style.setProperty('--color-primary-level', '#a82020');
             root.style.setProperty('--color-primary-hover', '#7a1414');
             root.style.setProperty('--color-on-primary', '#ffffff');
             
