@@ -51,11 +51,6 @@
     text-align: end;
 }
 
-.page-leaderboard .board .rank p,
-.page-leaderboard .board .rank span {
-    color: #8a2525 !important;
-}
-
 .page-leaderboard .board .total {
     padding: 1rem;
     text-align: end;
