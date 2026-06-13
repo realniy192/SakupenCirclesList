@@ -90,7 +90,7 @@
     background-color: var(--color-primary-level);
     border-color: var(--color-primary);
     color: var(--color-on-primary);
-    box-shadow: 0 2px 8px rgba(212, 194, 23, 0.2);
+    box-shadow: 0 2px 8px rgba(168, 32, 32, 0.2);
 }
 
 .page-leaderboard .player {
