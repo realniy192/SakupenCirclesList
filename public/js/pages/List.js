@@ -224,10 +224,6 @@ export default {
                                 <div class="type-title-sm">ID</div>
                                 <p class="type-body">{{ level.id }}</p>
                             </li>
-                            <li>
-                                <div class="type-title-sm">Password</div>
-                                <p class="type-body">{{ level.password || 'Free to Copy' }}</p>
-                            </li>
                         </ul>
                         <h2 class="type-headline-md">Records</h2>
                         
